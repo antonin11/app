@@ -29,7 +29,7 @@ public class Deadlines {
         this.groupId = groupId;
     }
 
-    private List<Deadlines> getDeadlines(ResultSet resultSet) throws SQLException {
+    private static List<Deadlines> getDeadlines(ResultSet resultSet) throws SQLException {
         List<Deadlines> deadlinesList = new ArrayList<Deadlines>();
         while (resultSet.next()) {
             Deadlines deadlines = new Deadlines(
@@ -44,7 +44,7 @@ public class Deadlines {
         return deadlinesList;
     }
 
-    public List<Deadlines> findAll() {
+    public static List<Deadlines> findAll() {
         DBConnectionHandler dbConnectionHandler = new DBConnectionHandler();
         try {
             Connection connection = dbConnectionHandler.getConnection();
@@ -57,7 +57,7 @@ public class Deadlines {
         return null;
     }
 
-    public List<Deadlines> findByGroups(int groupId) {
+    public static List<Deadlines> findByGroups(int groupId) {
         DBConnectionHandler dbConnectionHandler = new DBConnectionHandler();
         try {
             Connection connection = dbConnectionHandler.getConnection();
