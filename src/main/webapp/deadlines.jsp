@@ -2,7 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%--
   Created by IntelliJ IDEA.
   User: antoninpedotti
   Date: 25/05/2016
@@ -18,6 +19,7 @@
 <%
     List<Deadlines> deadlinesList = (ArrayList<Deadlines>)request.getAttribute("deadlinesList");
     for (Deadlines deadlines : deadlinesList) {
+
         SimpleDateFormat formater = null;
         formater = new SimpleDateFormat("'le' dd MMMM yyyy 'à' hh:mm:ss");
 

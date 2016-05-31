@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Title</title>
+
+    <a href="/deadlines">aller sur la page deadlines</a>
 </head>
 <body>
 
