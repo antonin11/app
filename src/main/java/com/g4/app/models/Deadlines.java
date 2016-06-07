@@ -72,4 +72,24 @@ public class Deadlines {
         return null;
     }
 
+    public static Deadlines addDeadline(String name, Date milestone, String description, int groupId) {
+        DBConnectionHandler dbConnectionHandler = new DBConnectionHandler();
+        try {
+            Connection connection = dbConnectionHandler.getConnection();
+            PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO `gappg4`.`deadline` (`id_deadline`, `deadline_nom`, `deadline_date`, `deadline_descri`, `id_groupe`) " +
+                            "VALUES (NULL, ?, ?, ?, ?)");
+            statement.setString(1, name);
+            statement.setDate(2, (java.sql.Date) milestone);
+            statement.setString(3, description);
+            statement.setInt(4, groupId);
+            ResultSet resultSet = statement.executeQuery();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 }
