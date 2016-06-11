@@ -1,6 +1,7 @@
 package com.g4.app.controllers;
 
 import com.g4.app.models.Deadlines;
+import jdk.nashorn.internal.objects.NativeDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,20 +20,24 @@ public class DeadlineController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Date milestone = new Date();
-        milestone.getTime();
-        Deadlines newdeadlines = Deadlines.addDeadline("Gauthier", milestone, "blablabla description", 1);
-        req.setAttribute("newdeadlines", newdeadlines);
-
         List<Deadlines> deadlinesList = Deadlines.findAll();
         req.setAttribute("deadlinesList", deadlinesList);
         this.getServletContext().getRequestDispatcher("/deadlines.jsp").forward(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Date milestone = new Date(2015-07-06);
-        Deadlines newdeadlines = Deadlines.addDeadline("Gauthier", milestone, "blablabla description", 1);
+        java.util.Date date = new java.util.Date();
+        java.sql.Date milestone = new java.sql.Date(date.getTime());
+
+        String nom = req.getParameter("nom");
+        String description = req.getParameter("description");
+
+        Deadlines newdeadlines = Deadlines.addDeadline(nom, milestone, description, 1);
+        List<Deadlines> deadlinesList = Deadlines.findAll();
+
+        req.setAttribute("deadlinesList", deadlinesList);
         req.setAttribute("newdeadlines", newdeadlines);
+        this.getServletContext().getRequestDispatcher("/deadlines.jsp").forward(req, resp);
         System.out.println(newdeadlines);
     }
 }

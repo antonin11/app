@@ -7,14 +7,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by antoninpedotti on 25/05/2016.
- */
+
 public class Deadlines {
 
     public int id;
     public String name;
-    public Date milestone;
+    public java.sql.Date milestone;
     public String description;
     public int groupId;
 
@@ -24,7 +22,7 @@ public class Deadlines {
     public Deadlines(int id, String name, Date milestone, String description, int groupId) {
         this.id = id;
         this.name = name;
-        this.milestone = milestone;
+        this.milestone = (java.sql.Date) milestone;
         this.description = description;
         this.groupId = groupId;
     }
@@ -72,7 +70,7 @@ public class Deadlines {
         return null;
     }
 
-    public static Deadlines addDeadline(String name, Date milestone, String description, int groupId) {
+    public static  Deadlines addDeadline(String name, Date milestone, String description, int groupId) {
         DBConnectionHandler dbConnectionHandler = new DBConnectionHandler();
         try {
             Connection connection = dbConnectionHandler.getConnection();
@@ -83,13 +81,16 @@ public class Deadlines {
             statement.setDate(2, (java.sql.Date) milestone);
             statement.setString(3, description);
             statement.setInt(4, groupId);
-            ResultSet resultSet = statement.executeQuery();
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
+
+
+
+
 
 }
