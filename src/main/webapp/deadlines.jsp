@@ -39,12 +39,6 @@
             <form action="/deadlines" method="post">
                 <input type="text" name="nom" placeholder="nom">
                 <input type="text" name="description" placeholder="description">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
@@ -52,11 +46,6 @@
 </container>
 
 
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
-</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="static/bootstrap/js/bootstrap.js"></script>
 </body>
