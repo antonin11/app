@@ -6,9 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Created by antoninpedotti on 25/05/2016.
- */
 public class DBConnectionHandler {
 
     // JDBC driver name and database URL
