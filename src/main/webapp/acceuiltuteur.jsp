@@ -33,6 +33,7 @@
                 </form>
             </c:forEach>
         </div>
+        <div><a href="/deadlines">Aller a la page deadlines</a></div>
     </div>
     
 </container>
