@@ -20,10 +20,17 @@ public class AcceuilTuteurController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<FicheEleve> ficheEleveList = FicheEleve.findAll();
-        req.setAttribute("fichEleveList", ficheEleveList);
+        req.setAttribute("ficheEleveList", ficheEleveList);
+
+        for (int i = 0; i<ficheEleveList.size(); i++){
+            System.out.println(ficheEleveList.get(i).getPrenom());
+        }
+
         this.getServletContext().getRequestDispatcher("/acceuiltuteur.jsp").forward(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //String id_eleve = req.getParameter("id_eleve");
+        //this.getServletContext().getRequestDispatcher("/fiche_eleve").forward(req, resp);
     }
 }

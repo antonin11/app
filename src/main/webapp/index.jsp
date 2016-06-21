@@ -11,6 +11,10 @@
     <title>Title</title>
 
     <a href="/deadlines">aller sur la page deadlines</a>
+    <br>
+    <a href="/acceuil_tuteur">aller sur la page acceuil tuteur</a>
+    <br>
+    <a href="/fiche_eleve">aller sur la page fiche eleve</a>
 </head>
 <body>
 

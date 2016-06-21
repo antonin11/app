@@ -22,6 +22,9 @@ public class DeadlineController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Deadlines> deadlinesList = Deadlines.findAll();
         req.setAttribute("deadlinesList", deadlinesList);
+        for (int i = 0; i<deadlinesList.size(); i++){
+            System.out.println(deadlinesList.get(i));
+        }
         this.getServletContext().getRequestDispatcher("/deadlines.jsp").forward(req, resp);
     }
 
@@ -38,6 +41,5 @@ public class DeadlineController extends HttpServlet {
         req.setAttribute("deadlinesList", deadlinesList);
         req.setAttribute("newdeadlines", newdeadlines);
         this.getServletContext().getRequestDispatcher("/deadlines.jsp").forward(req, resp);
-        System.out.println(newdeadlines);
     }
 }

@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: antoninpedotti
@@ -21,6 +22,8 @@
     <link href="static/css/all.css" rel="stylesheet">
 </head>
 <body>
+
+<br>
 <%
     List<Deadlines> deadlinesList = (ArrayList<Deadlines>)request.getAttribute("deadlinesList");
     for (Deadlines deadlines : deadlinesList) {

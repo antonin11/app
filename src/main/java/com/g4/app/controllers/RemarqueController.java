@@ -10,33 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by HWoog on 17/06/2016.
- */
-
-@WebServlet("/fiche_eleve")
-public class FicheEleveController extends HttpServlet {
+@WebServlet("/remarque_eleve")
+public class RemarqueController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id_eleve = 2;
-        List<FicheEleve> eleves = FicheEleve.findById(id_eleve);
-        FicheEleve eleve = eleves.get(0);
-        req.setAttribute("eleve", eleve);
-        //System.out.println(eleve.id);
-        this.getServletContext().getRequestDispatcher("/ficheeleve.jsp").forward(req, resp);
+        this.getServletContext().getRequestDispatcher("/remarque_eleve.jsp").forward(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id_eleve = req.getParameter("id_eleve");
-        System.out.println(id_eleve);
         int id = Integer.parseInt(id_eleve);
-        System.out.println(id);
         List<FicheEleve> eleves = FicheEleve.findById(id);
         FicheEleve eleve = eleves.get(0);
-        System.out.println(eleve.prenom);
         req.setAttribute("eleve", eleve);
-
-        //String remarque = req.getParameter("remarque");
-        this.getServletContext().getRequestDispatcher("/ficheeleve.jsp").forward(req, resp);
+        this.getServletContext().getRequestDispatcher("/remarque_eleve.jsp").forward(req, resp);
     }
 }

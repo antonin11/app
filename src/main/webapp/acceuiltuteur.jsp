@@ -1,6 +1,7 @@
 <%@ page import="com.g4.app.models.FicheEleve" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -20,26 +21,20 @@
     <link href="static/css/all.css" rel="stylesheet">
 </head>
 <body>
-<%
-    List<FicheEleve> ficheeleveList = (ArrayList<FicheEleve>)request.getAttribute("fichEleveList");
-    for (FicheEleve ficheeleve : ficheeleveList) {
-%>
-//faire tableau
-
-
-        out.println(ficheeleve.nom);
-        out.println(ficheeleve.prenom);
-        out.println(ficheeleve.mail);
-<%
-    }
-
-%>
 <container>
     <div class="row">
-        <div class="col-sm-6">
-            <a href="/"></a>
+        <div class="col-md-4">
+            <c:forEach items="${ ficheEleveList }" var="ficheeleve">
+                <p><c:out value="${ ficheeleve.prenom }" /></p>
+
+                <form action="/fiche_eleve" method="post">
+                    <input type="hidden" name="id_eleve" value="${ ficheeleve.id }" />
+                    <button type="submit" class="btn btn-primary">Aller sur la fiche de l'eleve</button>
+                </form>
+            </c:forEach>
         </div>
     </div>
+    
 </container>
 
 
