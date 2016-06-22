@@ -72,14 +72,14 @@ public class FicheEleve {
         return null;
     }
 
-    public static  Deadlines addRemarque(String remarque) {
+    public static  FicheEleve addRemarque(int id_eleve, String remarque) {
         DBConnectionHandler dbConnectionHandler = new DBConnectionHandler();
         try {
             Connection connection = dbConnectionHandler.getConnection();
             PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO `gappg4`.`deadline` (`id_user`, `user_nom`, `user_prenom`, `user_mail`, `user_type`,`user_remarque`) " +
-                            "VALUES (NULL, NULL , NULL , NULL , NULL, ?)");
+                    "UPDATE gappg4.user SET user_remarque=? WHERE id_user=?;");
             statement.setString(1, remarque);
+            statement.setInt(2, id_eleve);
             statement.executeUpdate();
 
         } catch (SQLException e) {

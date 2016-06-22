@@ -1,5 +1,6 @@
 package com.g4.app.controllers;
 
+import com.g4.app.models.Deadlines;
 import com.g4.app.models.FicheEleve;
 
 import javax.servlet.ServletException;
@@ -28,15 +29,14 @@ public class FicheEleveController extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id_eleve = req.getParameter("id_eleve");
-        System.out.println(id_eleve);
         int id = Integer.parseInt(id_eleve);
-        System.out.println(id);
         List<FicheEleve> eleves = FicheEleve.findById(id);
         FicheEleve eleve = eleves.get(0);
-        System.out.println(eleve.prenom);
         req.setAttribute("eleve", eleve);
 
-        //String remarque = req.getParameter("remarque");
+        List<Deadlines> deadlinesList = Deadlines.findAll();
+        req.setAttribute("deadlinesList", deadlinesList);
+
         this.getServletContext().getRequestDispatcher("/ficheeleve.jsp").forward(req, resp);
     }
 }

@@ -21,11 +21,6 @@ public class AcceuilTuteurController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<FicheEleve> ficheEleveList = FicheEleve.findAll();
         req.setAttribute("ficheEleveList", ficheEleveList);
-
-        for (int i = 0; i<ficheEleveList.size(); i++){
-            System.out.println(ficheEleveList.get(i).getPrenom());
-        }
-
         this.getServletContext().getRequestDispatcher("/acceuiltuteur.jsp").forward(req, resp);
     }
 

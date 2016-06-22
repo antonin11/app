@@ -24,9 +24,10 @@
         <p><c:out value="${ eleve.remarque }" /></p>
 
         <form action="/remarque_eleve" method="post">
-            <input type="hidden" name="id_eleve" value="${ ficheeleve.id }" />
+            <input type="hidden" name="id_eleve" value="${ eleve.id }" />
             <button type="submit" class="btn btn-primary">Modifier la remarque de l"élève</button>
         </form>
+
 
 
     </body>
